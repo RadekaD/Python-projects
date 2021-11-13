@@ -85,7 +85,6 @@ def arithmetic_arranger(problems, results=False):
     ## Output conditionals
 
 
-print(arithmetic_arranger(["3 + 855", "3801 - 2", "45 + 43", "123 + 49"], True))
 
 
 
