@@ -1,36 +1,40 @@
 ###Test program, without a function
 
 
-def error_handling(list, number1, number2, operator):
+def error_handling(number1, number2, operator):
 
 
     try: 
         int(number1)
+       
+        
+    except:
+        return "Error: Numbers must only contain digits."
+
+    try:
         int(number2)
     except:
-        return print("Error: Numbers must only contain digits.")
-        ### Tries to turn the numbers into integers, if fails, print error message
+        return "Error: Numbers must only contain digits."
+        ### Tries to turn the numbers into integers, if fails, print error messag
 
 
-    if len(list) > 5:
-        return print("Error: Too many problems.")
-        
-
-        ### Checks the amount of problem ie. length of list
-
-    if len(number1) > 4 or len(number2) > 4:
-
-        return print("Error: Numbers cannot be more than four digits.")
+    try:
+        if len(number1) > 4 or len(number2) > 4:
+            raise BaseException
+    except:
+        return "Error: Numbers cannot be more than four digits."
          
        ### Checks the length of numbers
-    
-    if operator != "+" and operator != "-":
-        return print("Error: Operator must be '+' or '-'.")
+    try:
+        if operator != "+" and operator != "-":
+            raise BaseException
+    except:
+        return "Error: Operator must be '+' or '-'."
         
          ### Checks wether plus or minus sign is used, doesn't allow other signs
 
+    
     return ""
-
 
 
 
@@ -39,6 +43,11 @@ def arithmetic_arranger(problems, results=False):
     start = True
     spaces = "    "  
     op1 = op2 = op3 = op4 = ""
+    try:
+        if len(problems) > 5:
+            raise BaseException
+    except:
+        return "Error: Too many problems."
 
     for i in range(0, len(problems)):
         items = problems[i].split()
@@ -46,10 +55,13 @@ def arithmetic_arranger(problems, results=False):
         sign = items[1]
         num2 = items[2]
 
-        err = error_handling(problems, num1, num2, sign)
+        err = error_handling(num1, num2, sign)
 
         if err != "":
             return err
+            
+            
+            
         
         space = max(len(num1), len(num2))
         num1_int = int(num1)
