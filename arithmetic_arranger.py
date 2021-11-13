@@ -8,12 +8,12 @@ def error_handling(list, number1, number2, operator):
         int(number1)
         int(number2)
     except:
-        return print("Error: Numbers must only contain digits")
+        return print("Error: Numbers must only contain digits.")
         ### Tries to turn the numbers into integers, if fails, print error message
 
 
     if len(list) > 5:
-        return print("Error: Too many problems")
+        return print("Error: Too many problems.")
         
 
         ### Checks the amount of problem ie. length of list
